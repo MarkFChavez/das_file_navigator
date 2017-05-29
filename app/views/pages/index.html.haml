@@ -1,6 +1,15 @@
 .row
+  .col-lg-6
+    = form_tag "/", method: "GET" do
+      .form-group
+        = text_field_tag :keyword, nil, class: "form-control", placeholder: "Search screencast here"
+
+      .form-group
+        = link_to "Reset", root_url, class: "btn btn-primary"
+
+.row
   .col-lg-12
     - @screencasts.each do |screencast|
       %div
-        %p.lead
-          = link_to screencast.decorated_name, "#"
+        %h3
+          = link_to screencast.decorated_name, screencast_path(name: screencast.name, path: screencast.path)

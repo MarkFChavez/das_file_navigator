@@ -1,11 +1,4 @@
 class PagesController < ApplicationController
-
-  Screencast = Struct.new(:name, :path) do
-    def decorated_name
-      name.gsub("-", " ")[9, name.length].split(".").first.capitalize
-    end
-  end
-
   def index
     @screencasts = []
 
@@ -14,9 +7,19 @@ class PagesController < ApplicationController
       path = get_file_for(filename)
       @screencasts << Screencast.new(filename, path)
     end
+
+    if keyword.present?
+      @screencasts.select! do |screencast|
+        screencast.name.match(keyword)
+      end
+    end
   end
 
   private
+
+  def keyword
+    params[:keyword]
+  end
 
   def screencasts_dir
     Dir.new(dir_str)
