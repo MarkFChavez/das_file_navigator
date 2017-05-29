@@ -9,7 +9,9 @@
 
 .row
   .col-lg-12
-    - @screencasts.each do |screencast|
-      %div
-        %h3
-          = link_to screencast.decorated_name, screencast_path(name: screencast.name, path: screencast.path)
+    - @screencasts.in_groups_of(3, false) do |group|
+      .row
+        - group.each do |screencast|
+          .col-lg-4
+            %h3
+              = link_to screencast.decorated_name, screencast_path(name: screencast.name, path: screencast.path)
