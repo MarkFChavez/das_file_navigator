@@ -10,7 +10,7 @@ class PagesController < ApplicationController
 
     if keyword.present?
       @screencasts.select! do |screencast|
-        screencast.name.match(keyword)
+        screencast.decorated_name.downcase.match(keyword.downcase)
       end
     end
   end
