@@ -1,24 +1,11 @@
-# README
+# Unix file navigator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Use this if you hate browsing your video files through directories.
 
-Things you may want to cover:
+Read video files and show it on the webpage. It comes with great benefits
+especially when you are studying.
 
-* Ruby version
+It provides:
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* full-text searching of videos
+* playing of video files (opens them up!)
