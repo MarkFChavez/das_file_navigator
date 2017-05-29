@@ -1,18 +1,27 @@
 class PagesController < ApplicationController
-  Screencast = Struct.new(:name)
+  Screencast = Struct.new(:name, :path)
 
   def index
     @screencasts = []
 
     screencasts_dir.each do |filename|
       next if filename.in?(%w{. ..})
-      @screencasts << Screencast.new(filename)
+      path = get_file_for(filename)
+      @screencasts << Screencast.new(filename, path)
     end
   end
 
   private
 
   def screencasts_dir
-    Dir.new(File.join("/Users/markchavez/Documents", "books-and-videos", "destroy-all-software"))
+    Dir.new(dir_str)
+  end
+
+  def get_file_for(filename)
+    File.join("/Users/markchavez/Documents", "books-and-videos", "destroy-all-software", filename)
+  end
+
+  def dir_str
+    File.join("/Users/markchavez/Documents", "books-and-videos", "destroy-all-software")
   end
 end
