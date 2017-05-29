@@ -22,14 +22,10 @@ class PagesController < ApplicationController
   end
 
   def screencasts_dir
-    Dir.new(dir_str)
+    Dir.new(Rails.application.secrets.files_directory)
   end
 
   def get_file_for(filename)
-    File.join("/Users/markchavez/Documents", "books-and-videos", "destroy-all-software", filename)
-  end
-
-  def dir_str
-    File.join("/Users/markchavez/Documents", "books-and-videos", "destroy-all-software")
+    [Rails.application.secrets.files_directory, filename].join("/")
   end
 end
