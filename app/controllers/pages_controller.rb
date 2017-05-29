@@ -1,5 +1,10 @@
 class PagesController < ApplicationController
-  Screencast = Struct.new(:name, :path)
+
+  Screencast = Struct.new(:name, :path) do
+    def decorated_name
+      name.gsub("-", " ")[9, name.length].capitalize
+    end
+  end
 
   def index
     @screencasts = []

@@ -1,3 +1,6 @@
-- @screencasts.each do |screencast|
-  %div
-    = screencast.name
+.row
+  .col-lg-12
+    - @screencasts.each do |screencast|
+      %div
+        %p.lead
+          = link_to screencast.decorated_name, "#"
