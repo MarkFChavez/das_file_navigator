@@ -3,7 +3,7 @@ class ScreencastsController < ApplicationController
     @screencast = screencast
     eval("`open #{screencast.path}`")
 
-    redirect_to root_url
+    redirect_to root_url(keyword: params[:keyword])
   end
 
   private

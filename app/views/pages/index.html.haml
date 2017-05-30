@@ -2,7 +2,7 @@
   .col-lg-6
     = form_tag "/", method: "GET" do
       .form-group
-        = text_field_tag :keyword, nil, class: "form-control", placeholder: "Search screencast here"
+        = text_field_tag :keyword, params[:keyword], class: "form-control", placeholder: "Search screencast here"
 
       .form-group
         = link_to "Reset", root_url, class: "btn btn-primary"
@@ -14,4 +14,4 @@
         - group.each do |screencast|
           .col-lg-4
             %h3
-              = link_to screencast.decorated_name, screencast_path(name: screencast.name, path: screencast.path)
+              = link_to screencast.decorated_name, screencast_path(name: screencast.name, path: screencast.path, keyword: params[:keyword])
